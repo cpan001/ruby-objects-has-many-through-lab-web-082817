@@ -4,15 +4,11 @@ require_relative "./doctor.rb"
 require_relative "./patient.rb"
 
 class Appointment
-  attr_accessor :date, :patient, :doctor
+  attr_accessor :doctor, :patient, :date
 
   def initialize(date, doctor)
     @date = date
     @doctor = doctor
-  end
-
-  def doctor
-    doctor = @doctor
     doctor.add_appointment(self)
   end
 

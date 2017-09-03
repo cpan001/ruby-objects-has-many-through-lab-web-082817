@@ -4,7 +4,8 @@ require_relative "./song.rb"
 require_relative "./genre.rb"
 
 class Genre
-  attr_accessor :name, :songs
+  attr_accessor :songs
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -12,7 +13,7 @@ class Genre
   end
 
   def artists
-    self.songs.map {|song| song.artist}
+    self.songs.collect {|song| song.artist}
   end
 
 end

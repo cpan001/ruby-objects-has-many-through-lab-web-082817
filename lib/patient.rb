@@ -4,7 +4,8 @@ require_relative "./doctor.rb"
 require_relative "./patient.rb"
 
 class Patient
-  attr_accessor :name, :appointments
+  attr_accessor :appointments
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -17,11 +18,8 @@ class Patient
   end
 
   def doctors
-    self.appointments.map do |appt|
-      appt.doctor
-    end
+    self.appointments.collect {|app| app.doctor}
   end
-
 end
 
 

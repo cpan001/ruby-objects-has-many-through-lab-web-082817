@@ -4,22 +4,22 @@ require_relative "./song.rb"
 require_relative "./genre.rb"
 
 class Artist
-  attr_accessor :name, :songs
+  attr_accessor :songs
+  attr_reader :name
 
   def initialize(name)
     @name = name
     @songs = []
   end
 
-  def add_song(song_obj)
-    self.songs << song_obj
-    song_obj.artist = self
+  def add_song(song)
+    @songs << song
+    song.artist = self
   end
 
   def genres
-    self.songs.map {|song| song.genre}
+    self.songs.collect {|song| song.genre}
   end
-
 end
 
 
